@@ -15,7 +15,7 @@ class MainViewModel : ViewModel() {
 
     private val thread: Thread by lazy {
         Thread {
-            while (!Thread.currentThread().isInterrupted) {
+            while (!Thread.interrupted()) {
                 val number = Random.nextInt(100)
                 val currentList = _numbersList.value.orEmpty().toMutableList()
                 currentList.add(number)
