@@ -1,8 +1,8 @@
 package com.example.multithread_async
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import com.example.multithread_async.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -20,5 +20,13 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.list.adapter = listAdapter
+
+        initObservers()
+    }
+
+    private fun initObservers() {
+        viewModel.numbersList.observe(this) {
+            listAdapter.submitList(it)
+        }
     }
 }
