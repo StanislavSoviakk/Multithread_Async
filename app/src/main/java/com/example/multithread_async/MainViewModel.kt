@@ -22,7 +22,7 @@ class MainViewModel : ViewModel() {
                 val number = Random.nextInt(100)
                 val currentList = numbersListFlow.value.toMutableList()
                 currentList.add(number)
-                numbersListFlow.value = currentList
+                numbersListFlow.emit(currentList)
                 delay(2000)
             }
         }
